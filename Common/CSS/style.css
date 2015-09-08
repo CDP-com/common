@@ -1,0 +1,409 @@
+/* The following is standard css that will be included with all apps.  Do not make changes to this file.  Any changes to this file will not be reflected in your published app. */
+
+/* Table of Contents
+Section 1 - Basic Elements
+Section 2 - Text Elements
+Section 3 - Page Structure
+Section 4 - Sidebar & Navigation
+Section 5 - Primary Content
+Section 6 - Contribute Content
+Section 7 - Ad Elements
+Section 8 - Footer Structure
+Section 9 - Web Logic 
+Section 10 - Navigation Elements  
+*/
+
+
+
+
+
+/* Section 1 - Basic Elements */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+body {
+	background: #e4e4e4;
+	min-width: 960px;
+	width: 100%;
+	margin: 0% auto;
+}
+
+
+
+
+
+/* Section 2 - Text Elements */
+h1,h2,h3,h4,h5,h6 {
+	clear: both;
+}
+h1 {
+	font-size: 36px;
+	font-weight: bold;
+	line-height: 2.5;
+}
+h2 {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 2;
+}
+h3 {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.5;
+}
+h4 {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1;
+}
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.625em;
+}
+a {
+   cursor : pointer ;
+}
+p {
+	margin-bottom: 1.625em;
+}
+ul, ol {
+	margin: 0 0 1.625em 2.5em;
+}
+ul {
+	list-style: square;
+}
+ol {
+	list-style-type: decimal;
+}
+strong {
+	font-weight: bold;
+}
+cite, em, i   {
+	font-style: italic;
+}
+blockquote {
+	font-family: Georgia, "Bitstream Charter", serif;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0 3em;
+}
+blockquote em, blockquote i, blockquote cite {
+	font-style: normal;
+}
+blockquote cite {
+	color: #666;
+	font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+
+
+
+
+/* Section 3 - Page Structure */
+#page {
+	background: #ffffff;
+	padding: 0%;
+}
+#header {
+	padding-bottom: 10px;
+	position: relative;
+	z-index: 9999;
+	height: 116px;
+	background: url('../media/header.gif') repeat-x;
+}
+#header-container {
+	width: 96%;
+	margin: 0 2%;
+
+}
+#logo {
+	width: 22.5%;
+	height: 90px;
+	float: left;
+	position: relative;
+	margin: 5px 15px 0 0;
+}
+#app_title {
+	float: right;
+	width: 74%;
+	padding: 2% 0 0 0;
+	position: relative;
+	text-align: right;
+	font-size: 24px;
+	font-weight: bold;
+	color: #b0291d;
+}
+#app_title div {
+	padding: 5px 0 0 0;
+	font-size: 12px;
+}
+#app_title a {
+   color: blue ;
+}
+#main {
+
+}
+#contentwrapper {
+	width: 96%;
+	margin: 0 2%;
+}
+
+
+
+
+
+/* Section 4 - Sidebar & Navigation */
+#secondary {
+	float: left;
+	width: 22.5%;
+	border-right: 2px solid #e4e4e4;
+}
+
+
+
+
+
+
+/* Section 5 - Primary Content */ 
+#primary {
+	float: right;
+	width: 74%;
+	padding: 2% 0 3%;
+	display: none;  
+}
+.tabs {
+	width: 100%;
+	border-bottom: 2px solid #02211b;
+	margin: 0 0 10px;
+}
+.tabs li {
+     	list-style:none;
+     	display:inline;
+}
+.tabs a {
+	padding:5px 10px;
+	display:inline-block;
+	background:#A4A4A4;
+	color:#fff;
+	text-decoration:none;
+}
+.tabs a.active {
+	background:#b0291d;
+	color:#ffffff;
+}
+.section_title {
+	padding: 0 0 15px 0;
+}
+#run {
+	width: 18%;
+	text-align: left;
+	float: left;
+	font-weight: bold;
+	margin: 0 0 15px 0;
+	border: none
+}
+#run .btn {
+	padding: 10px 20px;
+	background: #eee;
+	border: 2px solid #BDBDBD;
+	font-weight: bold;
+	font-size: 14px;
+	width: 100%;
+	white-space: normal;
+}
+#run .btn:hover{
+	background: #424242;
+	border: 2px solid #1C1C1C;
+	color: #fff;
+	cursor: pointer;
+}
+#description {
+	width: 80%;
+	float: right;
+	border : none ;
+}
+.developers-message {
+	padding: 15px;
+	background: #e4e4e4;
+}
+#main-side {
+	width: 20%;
+	float: right;
+	display: inline;
+	background: #e4e4e4;
+	padding: 2%;
+	margin: 0 0 5% 5%;
+	text-align: center;
+	border: 1px solid black;
+}
+#main-side img {
+	border: 1px solid #4f4f4f;
+}
+.main-table {
+	float: left;
+	width: 70%;
+	border: none;
+	margin: 0 0;
+}
+.main-table td {
+	border: none;
+	padding: 15px;
+	vertical-align: top;
+}
+.certification-table {
+	border-collapse: collapse;
+}
+.certification-table th{
+	padding: 15px;
+	font-weight: bold;
+}
+.certification-table td{
+	padding: 15px;
+}
+.certification-table .committee-name {
+	text-align: center;
+}
+
+
+
+/* Section 6 - Contribute Content */
+.contribute-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 25px 0 25px 0;
+}
+.contribute-table table, th, td {
+    border: 1px solid black;
+}
+.contribute-table td {
+	padding: 25px;
+}
+
+
+
+
+
+/* Section 7 - Ad Elements */
+#ad_area {
+    width: 100%;
+    min-height: 100px;
+    background: #e4e4e4;
+}
+
+
+
+
+
+
+/* Section 8 - Footer Structure */ 
+#footer {
+	position: relative;
+	width: 100%;
+	clear: both;
+	padding: 25px 0 25px;
+	background: url('../media/footer.gif') repeat-x;
+}
+#footer-container {
+	width: 960px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+
+
+
+
+/* Section 9 - Web Logic */ 
+#webpagelogic {
+    display: none;
+}
+
+
+
+
+
+
+/* Section 10 - Navigation Elements */ 
+.dtree {
+    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	font-size: 12px;
+	color: #666;
+	white-space: nowrap;
+}
+.dtree img {
+	border: 0px;
+	vertical-align: middle;
+}
+.dtree a {
+	color: #333;
+	text-decoration: none;
+}
+.dtree a.node, .dtree a.nodeurl, .dtree a.nodeSelurl, .dtree a.nodeSel  {
+	white-space: nowrap;
+	padding: 1px 2px 1px 2px;
+}
+.dtree a.node{
+	color: black;
+}
+
+.dtree a.node:hover{
+	color: black;
+	font-weight: bold;
+}
+
+.dtree a.nodeurl {
+	color: blue;
+	text-decoration: underline;
+}
+.dtree a.nodeurl:hover {
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.dtree a.nodeSelurl{
+	background-color: #c0d2ec;
+	color: blue;
+	text-decoration: underline;
+}
+
+.dtree a.nodeSelurl:hover {
+	background-color: #c0d2ec;
+	color: blue;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.dtree a.nodeSel {
+	background-color: #c0d2ec;
+}
+
+.dtree a.nodeSel:hover {
+	background-color: #c0d2ec;
+	color: black;
+	font-weight: bold;
+}
+.dtree .clip {
+	overflow: hidden;
+}
