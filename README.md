@@ -8,4 +8,4 @@ Add any notes you may find pertinent
 
 Changelog
 ----
-Add any changes made to this app
+10/28/2015, mstiles, Adding this file to the manifest for this app.
