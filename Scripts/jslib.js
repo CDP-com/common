@@ -228,39 +228,6 @@ function fnCopyFile( pFilePath, pTargetDir, pOverwrite )
     return nSuccess;
 }
 
-function fnCopyFolder( pFilePath, pTargetDir, pOverwrite )
-{
-    var lOverwrite = false;
-    if (pOverwrite == undefined)
-    {
-      lOverwrite = false;
-    }
-    else
-    {
-      lOverwrite = pOverwrite;
-    }
-    var shell = new ActiveXObject ( "WScript.Shell" );
-    var sPathFilename = shell.ExpandEnvironmentStrings( pFilePath );
-    var sTargetDir = shell.ExpandEnvironmentStrings( pTargetDir );
-    var fso, afile, nSuccess;
-    try
-    {
-        fso = new ActiveXObject( "Scripting.FileSystemObject" );
-        fso.CopyFolder( sPathFilename, sTargetDir, lOverwrite );
-
-        nSuccess = 1;
-    }
-    catch ( ed1 ) {
-        nSuccess = 0;
-    }
-    finally
-    {
-      fso = null;
-      shell = null;
-    }
-
-    return nSuccess;
-}
 
 function fnWriteLog( log_txt, io_mode )
 {
@@ -425,6 +392,101 @@ function fnCreateNewFolder( psFoldername )
     shell = null;
 
     return lSuccess;
+}
+function fnDeleteFolder( pFolderPath, pForce )
+{
+   var nSuccess;
+   var lForce = false;
+   if (pForce == undefined)
+   {
+      lForce = false;
+   }
+   else
+   {
+      lForce = pForce;
+   }
+   var shell, fso, sFolderPath;
+   try
+   {
+      shell = new ActiveXObject ( "WScript.Shell" );
+      sFolderPath = shell.ExpandEnvironmentStrings( pFolderPath );
+      fso = new ActiveXObject("Scripting.FileSystemObject");
+      fso.DeleteFolder(pFolderPath, pForce);
+      //fso.DeleteFolder("c:\\newtmp");
+      nSuccess = 1;
+   }
+   catch (ed2)
+   {
+      nSuccess = 0;   
+   }
+   finally
+   {
+      fso = null;
+      shell = null;
+   }
+   
+   return nSuccess;
+}
+
+function fnMoveFolder( pFolderPath, pTargetDir)
+{
+   var nSuccess;
+   var shell, fso, sFolderPath, sTargetDir;
+   try
+   {
+      shell = new ActiveXObject ( "WScript.Shell" );
+      sFolderPath = shell.ExpandEnvironmentStrings( pFolderPath );
+      sTargetDir = shell.ExpandEnvironmentStrings( pTargetDir );
+      fso = new ActiveXObject("Scripting.FileSystemObject");
+      fso.MoveFolder(pFolderPath, pTargetDir);
+      //fso.MoveFolder(fldrspec, "c:\\windows\\desktop\\");
+      nSuccess = 1;
+   }
+   catch (ed3)
+   {
+      nSuccess = 0;
+   }
+   finally
+   {
+      fso = null;
+      shell = null;
+   }
+   
+   return nSuccess;
+}
+
+function fnCopyFolder( pFilePath, pTargetDir, pOverwrite )
+{
+    var lOverwrite = false;
+    if (pOverwrite == undefined)
+    {
+      lOverwrite = false;
+    }
+    else
+    {
+      lOverwrite = pOverwrite;
+    }
+    var shell = new ActiveXObject ( "WScript.Shell" );
+    var sPathFilename = shell.ExpandEnvironmentStrings( pFilePath );
+    var sTargetDir = shell.ExpandEnvironmentStrings( pTargetDir );
+    var fso, afile, nSuccess;
+    try
+    {
+        fso = new ActiveXObject( "Scripting.FileSystemObject" );
+        fso.CopyFolder( sPathFilename, sTargetDir, lOverwrite );
+
+        nSuccess = 1;
+    }
+    catch ( ed1 ) {
+        nSuccess = 0;
+    }
+    finally
+    {
+      fso = null;
+      shell = null;
+    }
+
+    return nSuccess;
 }
 
 
