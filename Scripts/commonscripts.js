@@ -7,9 +7,9 @@
 $.commonscripts_config = {
     name: 'One-Click Apps',
     baseURL: null,
-    version: '1441381971602',
+    version: '1448303612676',
     manifest: 'scripts/commonscripts.xml',
-    updatefile: 'commonscripts1441381971602.cdpupdate',
+    updatefile: 'commonscripts1448303612676.cdpupdate',
     username: 'mom',
     password: 'lkjsdfsod',
     remoteStart: 'node/2',

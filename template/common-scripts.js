@@ -10,6 +10,7 @@ document.write(''
   + '<script type="text/javascript" src="../common/scripts/jslib.js"></script>' 
   + ''
   + '<!--MENU JAVASCRIPT FILES -->' 
+  + '<script type="text/javascript" src="../common/scripts/menuslider.js"></script>'
   + '<script type="text/javascript" src="../common/outline/cdptree.js"></script>'  
   + '<script type="text/javascript" src="../common/outline/metree.js"></script>'
   + '');

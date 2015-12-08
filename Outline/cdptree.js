@@ -517,8 +517,9 @@ cdpTree.prototype.showTree= function(pNode){
 // takes object cdpTree and outputs to page via document.write(d);
 cdpTree.prototype.toString = function(){
    var str = '<div class="dtree">\n';
-       str+= '<p><a href="javascript: '+this.divid+'.openAll();"><img src="../common/media/nolines_plus.jpg"><b>Open all</b></a> | ';
-       str+= '   <a href="javascript: '+this.divid+'.closeAll();"><img src="../common/media/nolines_minus.jpg"><b>Close all</b></a></p>';
+       str+= '<span style="display: block; text-align: center; padding-right: 15px">Use Your Mouse or Keyboard to Navigate<br />';
+	   str+= '<img alt="Up Key" src="../common/media/up-arrow.png" />&nbsp;<img alt="Down Key" src="../common/media/down-arrow.png" />&nbsp;<img alt="Left Key" src="../common/media/left-arrow.png" />&nbsp;<img alt="Right Key" src="../common/media/right-arrow.png" />&nbsp;<img alt="Home Key" src="../common/media/home.png" />&nbsp;<img alt="End Key" src="../common/media/end.png" />&nbsp;<img alt="Enter Key" src="../common/media/enter.png" /></span><br />';
+	   str+= '<br />';
    if(document.getElementById){
 	 // this.root allows me to later start at a node other than the real root
 	 var rn=this.aNodes[0];

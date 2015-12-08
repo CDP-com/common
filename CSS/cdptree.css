@@ -25,32 +25,32 @@
 	padding: 1px 2px 1px 2px;
 }
 .dtree a.node{
-	color: black;
+	color: #ffffff;
 }
 
 .dtree a.node:hover{
-	color: black;
+	color: #ffffff;
 	font-weight: bold;
 }
 
 .dtree a.nodeurl {
-	color: blue;
+	color: #ffffff;
 	text-decoration: underline;
 }
 .dtree a.nodeurl:hover {
-	color: blue;
+	color: #ffffff;
 	font-weight: bold;
 	text-decoration: underline;
 }
 .dtree a.nodeSelurl{
 	background-color: #c0d2ec;
-	color: blue;
+	color: #ffffff;
 	text-decoration: underline;
 }
 
 .dtree a.nodeSelurl:hover {
 	background-color: #c0d2ec;
-	color: blue;
+	color: #ffffff;
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -61,7 +61,7 @@
 
 .dtree a.nodeSel:hover {
 	background-color: #c0d2ec;
-	color: black;
+	color: #ffffff;
 	font-weight: bold;
 }
 .dtree .clip {

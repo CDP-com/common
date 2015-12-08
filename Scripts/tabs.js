@@ -50,12 +50,56 @@ $(document).ready(function()
          // Make the tab active.
          $active.addClass('active');
          $content.show();
+		 $('html,body').animate({scrollTop: $(this).offset().top -100}, 100);
 
       }
       );
    }
    );
    toggleDiv("primary");
+   
+   $(function()
+   {
+      $("#tab1").load("tab1.html");
+   }
+   );
+   
+   $(function()
+   {
+      $("#tab2").load("tab2.html");
+   }
+   );
+   
+   $(function()
+   {
+      $("#tab3").load("tab3.html");
+   }
+   );
+   
+   $(function()
+   {
+      $("#tab4").load("tab4.html");
+   }
+   );
+   
+   $(function()
+   {
+      $("#tab5").load("tab5.html");
+   }
+   );
+   
+   $(function()
+   {
+      $("#tab6").load("tab6.html");
+   }
+   );
+   
+   $(function()
+   {
+      $("#tab7").load("termsofuse.html");
+   }
+   );
+
 }
 );
 
