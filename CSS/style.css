@@ -459,25 +459,25 @@ blockquote cite {
 	text-decoration: underline;
 }
 .dtree a.nodeSelurl{
-	background-color: #c0d2ec;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #000000;
 	text-decoration: underline;
 }
 
 .dtree a.nodeSelurl:hover {
-	background-color: #c0d2ec;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #000000;
 	font-weight: bold;
 	text-decoration: underline;
 }
 
 .dtree a.nodeSel {
-	background-color: #c0d2ec;
+	background-color: #ffffff;
 }
 
 .dtree a.nodeSel:hover {
-	background-color: #c0d2ec;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #000000;
 	font-weight: bold;
 }
 .dtree .clip {
