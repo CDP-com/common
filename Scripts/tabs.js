@@ -50,7 +50,6 @@ $(document).ready(function()
          // Make the tab active.
          $active.addClass('active');
          $content.show();
-		 $('html,body').animate({scrollTop: $(this).offset().top -100}, 100);
 
       }
       );
