@@ -50,6 +50,7 @@ $(document).ready(function()
          // Make the tab active.
          $active.addClass('active');
          $content.show();
+		 $("html, body").animate({ scrollTop: 0 }, "slow");
 
       }
       );

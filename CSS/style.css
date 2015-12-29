@@ -506,6 +506,7 @@ blockquote cite {
 
 .dtree a.nodeSel {
 	background-color: #ffffff;
+	color: #000000;
 }
 
 .dtree a.nodeSel:hover {
