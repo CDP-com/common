@@ -8,5 +8,4 @@ Add any notes you may find pertinent
 
 Changelog
 ----
-12/8/2015, smmadara, Made changes to reflect the new app template
-10/28/2015, mstiles, Adding this file to the manifest for this app.
+12/04/2015, mstiles, Added Snapshotsvss to outline menu.
