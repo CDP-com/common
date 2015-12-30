@@ -50,14 +50,14 @@ $(document).ready(function()
          // Make the tab active.
          $active.addClass('active');
          $content.show();
-		 $("html, body").animate({ scrollTop: 0 }, "slow");
-
+         scrolled = false;
+         setTimeout('pageScroll();', 50);
       }
       );
    }
    );
    toggleDiv("primary");
-   
+
    $(function()
    {
       $("#tab1").load("tab1.html");
@@ -99,7 +99,6 @@ $(document).ready(function()
       $("#tab7").load("termsofuse.html");
    }
    );
-
 }
 );
 
