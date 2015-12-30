@@ -8,4 +8,5 @@ Add any notes you may find pertinent
 
 Changelog
 ----
+12/30/2015, mstiles, Changes to onlinecheck.js under common to fix bug that opens last remote webpage when main.html is refreshed.
 12/04/2015, mstiles, Added Snapshotsvss to outline menu.
