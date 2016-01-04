@@ -98,7 +98,7 @@ var menu01 =
    ,
    {
       "ilvl" : 2,
-      "name" : "Skype2",
+      "name" : "Multiple Skype Sessions",
       "url" : "../skype2/main.html",
       "title" : "This app allows you to Run Multiple Skype Instances",
       "comment" : "",
