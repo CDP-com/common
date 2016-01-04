@@ -118,7 +118,7 @@ var menu01 =
    ,
    {
       "ilvl" : 2,
-      "name" : "Show Snapshots VSS",
+      "name" : "Show Snapshot VSS",
       "url" : "../snapshotsvss/main.html",
       "title" : "This app will create a Microsoft Windows Shadow Copy of a volume",
       "comment" : "",
