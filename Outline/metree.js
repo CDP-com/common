@@ -118,6 +118,16 @@ var menu01 =
    ,
    {
       "ilvl" : 2,
+      "name" : "Show Snapshots VSS",
+      "url" : "../snapshotsvss/main.html",
+      "title" : "This app will create a Microsoft Windows Shadow Copy of a volume",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 2,
       "name" : "Developers SDK",
       "url" : "../developers/main.html",
       "title" : "App that Installs the Developers Environment and contains guides for developing apps.",
