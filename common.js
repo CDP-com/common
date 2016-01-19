@@ -7,9 +7,9 @@
 $.common_config = {
     name: 'One-Click Apps',
     baseURL: null,
-    version: '1451340209786',
+    version: '1451930521943',
     manifest: 'common.xml',
-    updatefile: 'common1451340209786.cdpupdate',
+    updatefile: 'common1451930521943.cdpupdate',
     username: 'mom',
     password: 'lkjsdfsod',
     remoteStart: 'node/2',
