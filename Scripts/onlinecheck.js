@@ -194,7 +194,6 @@ function fixremotelinks()
 				}
             //x[i].innerHTML = x[i].innerHTML + "<em> (Internet)</em>";
             x[i].style.textDecoration = "underline";
-            x[i].style.color = "white";
             x[i].style.cursor = "pointer";
             x[i].removeAttribute("href");
             x[i].removeAttribute("target");
@@ -223,7 +222,6 @@ function fixremotelinks()
             if (x[i].href.toString().indexOf("#") >= 0 && x[i].id.indexOf("smenu") >= 0)
             {
                x[i].style.textDecoration = "none";
-               x[i].style.color = "white";
                x[i].removeAttribute("href");
                x[i].removeAttribute("target");
             }
@@ -242,7 +240,6 @@ function fixremotelinks()
          if (x[i].href.toString().indexOf("#") >= 0 && x[i].id.indexOf("smenu") >= 0)
          {
             x[i].style.textDecoration = "none";
-            x[i].style.color = "white";
             x[i].removeAttribute("href");
             x[i].removeAttribute("target");
          }
