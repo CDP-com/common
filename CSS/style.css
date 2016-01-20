@@ -264,6 +264,9 @@ blockquote cite {
 	float: left;
 	margin: 0 5px;
 }
+.producer-credits a, .producer-credits a:visited, .producer-credits a:hover, .producer-credits a:active {
+	color: #ffffff;
+}
 #content-container {
 	background-color: #ffffff;
 	padding: 1% 2%;
@@ -506,6 +509,7 @@ blockquote cite {
 
 .dtree a.nodeSel {
 	background-color: #ffffff;
+	color: #000000;
 }
 
 .dtree a.nodeSel:hover {
