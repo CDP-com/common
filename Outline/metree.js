@@ -55,6 +55,16 @@ var menu01 =
       "target" : "_self",
       "expanded" : true
    }
+      ,
+   {
+      "ilvl" : 2,
+      "name" : "App Template",
+      "url" : "../apptemplate/main.html",
+      "title" : "App Template is a template for developers to use as a sample to help create their own apps.  It is used to help create the look and feel for all our apps.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
    ,
    {
       "ilvl" : 2,
