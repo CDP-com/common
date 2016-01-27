@@ -43,6 +43,13 @@ function IsAdmin(DName, UName)
     return 0; 
 }
 	
+function ReadFromRegistry(sRegEntry)
+{
+    var regpath = sRegEntry;
+    var oWSS = new ActiveXObject("WScript.Shell");
+    return oWSS.RegRead(regpath);
+}	
+	
 function InitializePermissions()
 {
 	// Init Global permissions
