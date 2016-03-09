@@ -1,0 +1,7 @@
+document.write(''
+  + '<p><strong>No Cost to You.</strong></p>'
+  + ''
+  + '<p>All SnapBack Apps are free for both business and personal use, provided that the SnapBack Platform is "hand installed", by a user and not "mass installed".    However, for some apps they may be working with or modify another application, such as Microsoft Word, which is obviously not free.  Sometimes we might independently offer that application to you with a link to a separate page.  If and when we offer you the software, we warrant that to our best ability, we have fully disclosed which products in that category are best, the least cost prices with links, along with any dissenting opinions from contributors like you. </p>'
+  + ''
+  + '<p>For all our users, contributors, attributable sources, and other companies, we have prepared an easy to understand page that explains all our <a id="policiesterms" href="#" >Policies, Complete Terms, and Conditions of our SnapBack Apps, Platform, website, and our SnapBack Apps Factory</a> where they are produced.  Together, this page, the FAQ, and the discussions of users, contributors, and CDP should convince you that this project is worthy of your full support.</p>'
+  + '');

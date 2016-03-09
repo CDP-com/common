@@ -1,0 +1,12 @@
+document.write(''
+  + '<p>This area is dedicated to providing technical details about the app.  Provide the mechanics of how the app works.  Generally speaking, if you are making changes to a user\'s computer, it\'s best to detail those changes in a completely transparent manner.</p>'
+  + ''
+  + '<p>Include more details than what would appear on the "Home" tab and be free to use more technical language in the process.</p>'
+  + ''
+  + '<hr />'
+  + ''
+  + '<h3>Technical Details</h3>'
+  + '<p>Include, in specific wording, what your app does.  Some questions you may want to answer include: What files does your app change?  In what programming language is your app written?  Are there any resources you\'ve used to create your app?  Feel free to include as much detail as you want.</p>'
+  + ''
+  + '<hr />'
+  + '');

@@ -7,9 +7,9 @@
 $.commontemplate_config = {
     name: 'SnapBack Apps',
     baseURL: null,
-    version: '1451337636933',
+    version: '1457032707703',
     manifest: 'template/commontemplate.xml',
-    updatefile: 'commontemplate1451337636933.cdpupdate',
+    updatefile: 'commontemplate1457032707703.cdpupdate',
     username: 'mom',
     password: 'lkjsdfsod',
     remoteStart: 'node/2',

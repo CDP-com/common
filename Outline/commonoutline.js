@@ -7,9 +7,9 @@
 $.commonoutline_config = {
     name: 'One-Click Apps',
     baseURL: null,
-    version: '1451930479126',
+    version: '1457032711927',
     manifest: 'outline/commonoutline.xml',
-    updatefile: 'commonoutline1451930479126.cdpupdate',
+    updatefile: 'commonoutline1457032711927.cdpupdate',
     username: 'mom',
     password: 'lkjsdfsod',
     remoteStart: 'node/2',

@@ -228,7 +228,6 @@ function fnCopyFile( pFilePath, pTargetDir, pOverwrite )
     return nSuccess;
 }
 
-
 function fnWriteLog( log_txt, io_mode )
 {
     if ( lDebugMode )
@@ -342,6 +341,7 @@ function fnReadFile( file_name )
 /*-----------------------------------------------------*/
 /*----------------- Folder Functions ------------------*/
 /*-----------------------------------------------------*/
+
 function fnFolderExists( psFoldername )
 {
     var lSuccess;
@@ -393,6 +393,7 @@ function fnCreateNewFolder( psFoldername )
 
     return lSuccess;
 }
+
 function fnDeleteFolder( pFolderPath, pForce )
 {
    var nSuccess;
@@ -488,8 +489,6 @@ function fnCopyFolder( pFilePath, pTargetDir, pOverwrite )
 
     return nSuccess;
 }
-
-
 
 /*-----------------------------------------------------*/
 /*--------------- Registry Functions ------------------*/
@@ -592,75 +591,157 @@ function fnRegExists(regkey)
    return retval;
 }
 
-function fnGetDocPath()
+function ReadFromRegistry(sRegEntry)
 {
-	// Return document location without file name
-	var docpath = document.location.href.toString();
-	docpath = docpath.substr(0, docpath.lastIndexOf('/') + 1);
-	return docpath;
+    var regpath = sRegEntry;
+    var oWSS = new ActiveXObject("WScript.Shell");
+    return oWSS.RegRead(regpath);
 }
 
-function loadScript( url, callback )
+function WriteInRegistryDW(sRegEntry, sRegValue)
 {
-    var script = document.createElement( "script" );
-    script.type = "text/javascript";
-
-    if ( script.readyState )
-    {
-        // IE
-        script.onreadystatechange = function()
-        {
-            if ( script.readyState == "loaded" ||
-            script.readyState == "complete" )
-            {
-                script.onreadystatechange = null;
-                callback();
-            }
-        }
-        ;
-    }
-    else
-    {
-        // Others
-        script.onload = function()
-        {
-            callback();
-        }
-        ;
-    }
-
-    script.src = url;
-    document.getElementsByTagName( "head" )[0].appendChild( script );
+  var regpath = sRegEntry;
+  var oWSS = new ActiveXObject("WScript.Shell");
+  oWSS.RegWrite(regpath, sRegValue, "REG_DWORD");
 }
 
+function WriteInRegistrySZ(sRegEntry, sRegValue)
+{
+  var regpath = sRegEntry;
+  var oWSS = new ActiveXObject("WScript.Shell");
+  oWSS.RegWrite(regpath, sRegValue, "REG_SZ");
+}	
 
-// Search for string in an array returns array
-// Example:
-// if( !aArrayToSearch.find( unescape( sSearchString ) )
-//    aArrayToSearch.push( unescape( sSearchString ) );
-Array.prototype.find = function(searchStr) 
-{  
-    var returnArray = false;  
-    for (i=0; i<this.length; i++) 
-    {    
-        if (typeof(searchStr) == 'function') 
-        {      
-            if (searchStr.test(this[i])) 
-            {        
-                if (!returnArray) { returnArray = [] }        
-                returnArray.push(i);      
-            }    
-        } else {      
-            if (this[i]===searchStr) 
-            {        
-                if (!returnArray) { returnArray = [] }        
-                returnArray.push(i);      
-            }    
-        }  
-    }  
-    return returnArray;
+///////////////////////////////////////////////////////////////////////////////
+// Function Name : RunApp
+// Purpose : Check Permission before an app to run
+// Parameters : AppName (Application Name)
+//              ButtonNum (Button Id in this App)           
+//              Computername (Domain name or Local computer name)
+//              CurrentUser (Current User Name)
+//              sCmd (Script/exe name to excute)
+// 
+///////////////////////////////////////////////////////////////////////////////
+ 
+function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
+{
+	var btnKey="\\button"+ButtonNum;
+    var GlobalCurrentCautionPath = "HKCU\\SOFTWARE\\CDP\\SnapBack\\Apps\\CurrentCaution";  
+    var AppRoot = "HKLM\\SOFTWARE\\CDP\\SnapBack\\Apps\\"; 
+    var AppCurrentCautionPath = AppRoot + AppName + btnKey+ "\\CurrentCaution";
+    var AppCurrentEnableButtonPath = AppRoot + AppName + btnKey+ "\\CurrentEnableButton";
+    var AppCurrentAllowUserPath = AppRoot + AppName + btnKey+ "\\CurrentAllowUser";    
+    var sFullpath = "";
+	var stats = IsAdmin(Computername, CurrentUser)
+	var buttonName="btn"+ButtonNum;
+			 
+	// setup command for service to run or development command to be run
+	if (development)
+	{
+	    if (sCmd.indexOf("file:") < 0) sFullpath = fnGetDocPath();
+		sFullpath += sCmd;
+		sCmd = sFullpath;
+		var shell = new ActiveXObject ( "WScript.Shell" );
+		var sPathFoldername = shell.ExpandEnvironmentStrings( unescape( sCmd ) );
+		sPathFoldername = ('"' + sPathFoldername + '"');	
+   	}
+	
+	if (ReadFromRegistry(AppCurrentEnableButtonPath))
+	{
+		if (IsAdmin(Computername, CurrentUser))
+		{ 
+		     if (ReadFromRegistry(GlobalCurrentCautionPath))
+			 { 
+				// Run IT
+				if(development)
+				{
+					shell.run("explorer.exe " + sPathFoldername, 1, false);
+					shell = null;
+				}
+				else
+				{
+					// Service Call
+					//runService(ServiceName);
+				}
+			 }
+			 else 
+			 {
+				 // Check button Caution
+				 if (ReadFromRegistry(AppCurrentCautionPath))
+				 {
+					 //Run It
+					if(development)
+					{
+						shell.run("explorer.exe " + sPathFoldername, 1, false);
+						shell = null;
+					}
+					else
+					{
+					// Service Call
+					//runService(ServiceName);
+					}
+				 }
+				 else {
+					 alert (MSG_WARNING);
+					 return;
+				 }
+			}
+		}
+		else 
+		{
+			// Not an admin
+			if (ReadFromRegistry(AppCurrentAllowUserPath))
+			{
+				if (ReadFromRegistry(GlobalCurrentCautionPath))
+				{ 
+				// Run IT
+				    if(development)
+					{
+						shell.run("explorer.exe " + sPathFoldername, 1, false);
+						shell = null;
+					}
+					else
+					{
+					// Service Call
+					//runService(ServiceName);
+					}
+				}
+				else 
+				{
+					// Check button Caution
+					if (ReadFromRegistry(AppCurrentCautionPath))
+					{
+					    //Run It
+						if(development)
+						{
+						    shell.run("explorer.exe " + sPathFoldername, 1, false);
+						    shell = null;
+						}
+						else
+						{
+							// Service Call
+							//runService(ServiceName);
+						}
+					}
+					else {
+					    alert (MSG_WARNING);
+					    return;
+					}
+				}
+			}
+			else
+			{
+				alert (MSG_USERDISABLED);
+				return;
+			}
+					 
+		} // end else not admin
+	} // end enable switch		
+	else {
+		alert(MSG_RUNDISABLED);
+		return;
+	}
 }
-
 
 /*-----------------------------------------------------*/
 /*------------------- Misc Functions ------------------*/
@@ -770,3 +851,70 @@ function copyToClipboard(text) {
 	window.prompt("To Share this App, Copy the Following URL to Clipboard: hit Ctrl+C and then press Enter", text);
 }
 
+function fnGetDocPath()
+{
+	// Return document location without file name
+	var docpath = document.location.href.toString();
+	docpath = docpath.substr(0, docpath.lastIndexOf('/') + 1);
+	return docpath;
+}
+
+function loadScript( url, callback )
+{
+    var script = document.createElement( "script" );
+    script.type = "text/javascript";
+
+    if ( script.readyState )
+    {
+        // IE
+        script.onreadystatechange = function()
+        {
+            if ( script.readyState == "loaded" ||
+            script.readyState == "complete" )
+            {
+                script.onreadystatechange = null;
+                callback();
+            }
+        }
+        ;
+    }
+    else
+    {
+        // Others
+        script.onload = function()
+        {
+            callback();
+        }
+        ;
+    }
+
+    script.src = url;
+    document.getElementsByTagName( "head" )[0].appendChild( script );
+}
+
+// Search for string in an array returns array
+// Example:
+// if( !aArrayToSearch.find( unescape( sSearchString ) )
+//    aArrayToSearch.push( unescape( sSearchString ) );
+Array.prototype.find = function(searchStr) 
+{  
+    var returnArray = false;  
+    for (i=0; i<this.length; i++) 
+    {    
+        if (typeof(searchStr) == 'function') 
+        {      
+            if (searchStr.test(this[i])) 
+            {        
+                if (!returnArray) { returnArray = [] }        
+                returnArray.push(i);      
+            }    
+        } else {      
+            if (this[i]===searchStr) 
+            {        
+                if (!returnArray) { returnArray = [] }        
+                returnArray.push(i);      
+            }    
+        }  
+    }  
+    return returnArray;
+}

@@ -1,3 +1,7 @@
+/*-----------------------------------------------------*/
+/*---------- Depreciated runapp.js Functions ----------*/
+/*-----------------------------------------------------*/
+
 // JavaScript Document
 // runapp.js - runs any app passed in
 //             
@@ -219,35 +223,6 @@ if ( objArgs.length == 1 ) {
     }
 }
 
-function fnToLocalURL( strEscaped )
-{
-    var sReturn = "";
-    if ( strEscaped.indexOf( 'file' ) == 0 )
-    {
-        sReturn += strEscaped;
-    } else {
-        sReturn = 'file:///';
-        sReturn += strEscaped;
-    }
-
-    //for (i=0; i<sReturn.length; i++)
-    //{
-        sReturn = sReturn.replace(/%3A/g, ':');
-        sReturn = sReturn.replace(/%5C/g, '/');
-        sReturn = sReturn.replace(/%22/g, '');
-        sReturn = sReturn.replace(/%5B/g, '[');
-        sReturn = sReturn.replace(/%5D/g, ']');
-    //}
-    var nPos1 = sReturn.lastIndexOf( "//" );
-    if ( nPos1 > 18 )
-    {
-        var sReturn1 = ( sReturn.substr( 0, nPos1 ) + sReturn.substring( nPos1 + 1 ) );
-        sReturn = sReturn1;
-        //WScript.Echo(sReturn);
-    }
-
-    return sReturn;
-}
 
 function fnGetOs()
 {

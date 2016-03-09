@@ -7,9 +7,9 @@
 $.commoncss_config = {
     name: 'One-Click Apps',
     baseURL: null,
-    version: '1451337714212',
+    version: '1457032727153',
     manifest: 'css/commoncss.xml',
-    updatefile: 'commoncss1451337714212.cdpupdate',
+    updatefile: 'commoncss1457032727153.cdpupdate',
     username: 'mom',
     password: 'lkjsdfsod',
     remoteStart: 'node/2',

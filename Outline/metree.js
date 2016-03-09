@@ -55,26 +55,6 @@ var menu01 =
       "target" : "_self",
       "expanded" : true
    }
-      ,
-   {
-      "ilvl" : 2,
-      "name" : "App Template",
-      "url" : "../apptemplate/main.html",
-      "title" : "App Template is a template for developers to use as a sample to help create their own apps.  It is used to help create the look and feel for all our apps.",
-      "comment" : "",
-      "target" : "_self",
-      "expanded" : true
-   }
-   ,
-   {
-      "ilvl" : 2,
-      "name" : "Hello World",
-      "url" : "../helloworld/main.html",
-      "title" : "Hello world is a sample app. It is used to help establish the look and feel for all our apps.",
-      "comment" : "",
-      "target" : "_self",
-      "expanded" : true
-   }
    ,
    {
       "ilvl" : 2,
@@ -137,7 +117,7 @@ var menu01 =
    }
    ,
    {
-      "ilvl" : 2,
+      "ilvl" : 1,
       "name" : "Developers SDK",
       "url" : "../developers/main.html",
       "title" : "App that Installs the Developers Environment and contains guides for developing apps.",
@@ -147,12 +127,42 @@ var menu01 =
    }
    ,
    {
-      "ilvl" : 1,
-      "name" : "App Search",
-      "url" : "http://factory.snapback-apps.com/app/",
-      "title" : "Takes you to the SnapBack Apps Factory and displays a list of all apps in production and in development.",
+      "ilvl" : 2,
+      "name" : "App Template",
+      "url" : "../apptemplate/main.html",
+      "title" : "App Template is a template for developers to use as a sample to help create their own apps.  It is used to help create the look and feel for all our apps.",
       "comment" : "",
-      "target" : "_blank",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 2,
+      "name" : "Hello World",
+      "url" : "../helloworld/main.html",
+      "title" : "Hello world is a sample app. It is used to help establish the look and feel for all our apps.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 1,
+      "name" : "Notices",
+      "url" : "../notices/main.html",
+      "title" : "Notices is an app that displays alerts and notifications to the user of the SnapBack Platform.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 1,
+      "name" : "Settings",
+      "url" : "../settings/main.html",
+      "title" : "Settings is an app that configures the SnapBack Platform for the user.",
+      "comment" : "",
+      "target" : "_self",
       "expanded" : true
    }
    ,

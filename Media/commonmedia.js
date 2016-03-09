@@ -7,9 +7,9 @@
 $.commonmedia_config = {
     name: 'One-Click Apps',
     baseURL: null,
-    version: '1451337675465',
+    version: '1457032716018',
     manifest: 'media/commonmedia.xml',
-    updatefile: 'commonmedia1451337675465.cdpupdate',
+    updatefile: 'commonmedia1457032716018.cdpupdate',
     username: 'mom',
     password: 'lkjsdfsod',
     remoteStart: 'node/2',
