@@ -8,6 +8,8 @@ Add any notes you may find pertinent
 
 Changelog
 ----
+03/14/2016, smadara, added script files for readmore function, continued work on button logic, added dependencies for jquery ui
+
 03/09/2016, smadara, Added additional template files, merged script files, added jquery-ui, modified metree.js
 
 01/04/2016, mstiles, Added Show Snapshots VSS app to outline.

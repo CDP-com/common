@@ -21,8 +21,12 @@ var GlobalLastModifiedCautionVal = "";
 //              UName (Current User Name)
 // Return : Function return 1 if user is in Administrator Group and 0 if not
 ///////////////////////////////////////////////////////////////////////////////
-function IsAdmin(DName, UName)
+function IsAdmin()
 {
+	var oTest = new ActiveXObject("wscript.shell");
+	DName = oTest.ExpandEnvironmentStrings("%COMPUTERNAME%") 
+	UName = oTest.ExpandEnvironmentStrings("%USERNAME%") 
+	oTest = null;
     var objWMIService = GetObject("winmgmts:\\\\" + DName + "\\root\\CIMV2");
     var colItems = objWMIService.ExecQuery("SELECT * FROM Win32_GroupUser");
     var enumItems = new Enumerator(colItems);
@@ -42,6 +46,37 @@ function IsAdmin(DName, UName)
     }
     return 0; 
 }
+
+function IsAdministrator()
+{
+	var AppRoot = "HKLM\\SOFTWARE\\CDP\\test";
+	var WshShell = new ActiveXObject("WScript.Shell");
+	try
+	{
+		var ret = WshShell.RegWrite(AppRoot, 1, "REG_DWORD");
+		//alert("Running as administrator");
+	    return true;
+	}
+	catch(e)
+	{
+		//alert("Not Running as administrator");
+		return false;
+	}
+
+}
+
+/* This function launches the platform running as administrator and shuts down this hta */
+/* */
+	function SBAdmin()
+	{
+		var shell = new ActiveXObject ( "WScript.Shell" );
+		var theCommand = shell.ExpandEnvironmentStrings("%PROGRAMDATA%\\CDP\\SnapBack\\Apps\\common\\misc\\SBAdmin.bat");
+
+		// tried running as .lnk and through .bat - works through .bat
+		var ret = shell.Run(theCommand,0,false);
+		shell = null;		
+		window.parent.close();
+	}
 
 /*-----------------------------------------------------*/
 /*--------------- Initialize Permissions --------------*/
@@ -75,10 +110,18 @@ function GetGlobalIniValue(ValueName)
 
 function SetButtonIniValue(AppName, ButtonNumber, ValueName, Value, ValueType)
 {
+    // run as admin   HKLM keys must be administrator to modifiy
 	var AppRoot = "HKLM\\SOFTWARE\\CDP\\SnapBack\\Apps\\";
 	var RegPath = AppRoot + AppName + "\\button" + ButtonNumber + "\\" + ValueName;
 	var WshShell = new ActiveXObject("WScript.Shell");
-	var ret = WshShell.RegWrite(RegPath, Value, ValueType);
+	try
+	{
+		var ret = WshShell.RegWrite(RegPath, Value, ValueType);
+	}
+	catch(e)
+	{
+		alert(MSG_MUSTBEADMIN);
+	}
 }
 
 function GetButtonIniValue(AppName, ButtonNumber, ValueName)
@@ -113,17 +156,18 @@ function InitializePermissions()
 		SetGlobalIniValue(GlobalPathDefaultValName, globalDefaultPermissionVal, "REG_DWORD");
 	    SetGlobalIniValue(GlobalCurrentCautionValName, globalDefaultPermissionVal, "REG_DWORD");
 	}
+
 } 
 
 /*-----------------------------------------------------*/
 /*-------------------- Button Logic -------------------*/
 /*-----------------------------------------------------*/
 
-function runService(btnName,command)
+function runService(mURL,btnName,command)
 {
 	var output = "";
     var UpdObj;
-    var command2 = ManifestURL_Local + "," + command;
+    var command2 = mURL + "," + command;
     UpdObj = new ActiveXObject( "CDPUpdater.Updater" );
 
     try
@@ -140,7 +184,7 @@ function runService(btnName,command)
         UpdObj = null;
     }
         
-    buttonLogic( output,btnName);
+   // buttonLogic( output,btnName);
 }
 function buttonLogic(output,buttonName)
 {
@@ -209,8 +253,8 @@ function EnableButtonChecked(ButtonNum)
 {   
     today = Date();
 	var btncaa="btn"+ButtonNum+"CurrentEnableButton";
-	var AppRoot = "HKLM\\SOFTWARE\\CDP\\SnapBack\\Apps\\";  
-	var wsh = new ActiveXObject("WScript.Shell");
+	//var AppRoot = "HKLM\\SOFTWARE\\CDP\\SnapBack\\Apps\\";  
+	//var wsh = new ActiveXObject("WScript.Shell");
 	ButtonEnableButtonId = "ButtonEnableButton" + ButtonNum;	
 	var chkBox = document.getElementById(ButtonEnableButtonId);
 	
@@ -224,7 +268,7 @@ function EnableButtonChecked(ButtonNum)
 	    SetButtonIniValue(appname, ButtonNum, "EnableButtonLastModifiedDate", today, "REG_SZ");
         btncaa=0;	
 	}
-	wsh = null;
+	//wsh = null;
 } 
 
 function CurrentAllowUserChecked(ButtonNum) 
@@ -290,7 +334,8 @@ function CreateButtonAdminTable()
 	var s="<table class='tblSettings' id='tblSet' ><col width='10%'><col width='40%'><col width='50%'>";
     s+="<tr>";
 	s+="<TABLE cellpadding=3 cellspacing=3 ><th>&nbsp;Button Name&nbsp;</th><th>&nbsp;Enable Button&nbsp;</th><th>&nbsp;Enable Normal User&nbsp;</th><th>&nbsp;Run without Warning&nbsp;</th>";
-	
+	if(IsAdministrator())
+	{
 	for (i=0; i<btncount; i++){
 		btnTitle="btn"+i+"_Title";
 	    s+="		<tr>";
@@ -321,14 +366,64 @@ function CreateButtonAdminTable()
 	    CurrentCaution  = GetButtonIniValue(appname, i, "CurrentCaution");
 	    if (CurrentCaution == 1)
 	    { 
-		    s+="<input type='checkbox' id='CurrentCaution"+i+"' checked onclick='CurrentCautionChecked("+i+");'>"
+		    s+="<input type='checkbox' id='CurrentCaution"+i+"' checked onclick='CurrentCautionChecked("+i+");'>";
 	    }
 	    else
 	    {
-		    s+="<input type='checkbox' id='CurrentCaution"+i+"'  onclick='CurrentCautionChecked("+i+");'>"
+		    s+="<input type='checkbox' id='CurrentCaution"+i+"'  onclick='CurrentCautionChecked("+i+");'>";
 	    }
 	    s+="</td>";
 	    s+="		</tr>";
+	}
+	}
+	else
+	{
+		// Not an Administrator
+	for (i=0; i<btncount; i++){
+		btnTitle="btn"+i+"_Title";
+	    s+="		<tr class='table-disabled'>";
+	    s+="		<td>&nbsp;";
+	    s+=eval(btnTitle);
+	    s+="</td><td>&nbsp;";
+	    ButtonEnableButton = GetButtonIniValue(appname, i, "CurrentEnableButton");
+		if (ButtonEnableButton == 1)
+		{ 
+	        s+="<input name='beb"+i+"' type='checkbox' disabled='disabled' id='ButtonEnableButton"+i+"' checked='checked'/>";
+			s+="<input name='beb"+i+"' type='hidden' value='true'/>";
+		}
+		else
+		{
+			s+="<input name='beb"+i+"' type='checkbox' disabled='disabled' id='ButtonEnableButton"+i+"' />";
+			s+="<input name='beb"+i+"' type='hidden' value='true'/>";
+		}
+	    s+="</td> ";
+	    s+="</td><td>&nbsp;";
+	    CurrentAllowUser = GetButtonIniValue(appname, i, "CurrentAllowUser");
+		if (CurrentAllowUser == 1)
+		{
+			s+="<input name='cau"+i+"' type='checkbox' disabled='disabled' id='CurrentAllowUser"+i+"' checked='checked'/>";
+            s+="<input name='cau"+i+"' type='hidden' value='true'/>";
+		}
+		else	{
+			s+="<input name='cau"+i+"' type='checkbox' disabled='disabled' id='CurrentAllowUser"+i+"' />";
+            s+="<input name='cau"+i+"' type='hidden' value='true'/>";
+		}
+	    s+="</td>";
+	    s+="</td><td>&nbsp;";
+	    CurrentCaution  = GetButtonIniValue(appname, i, "CurrentCaution");
+	    if (CurrentCaution == 1)
+	    { 
+		    s+="<input name='cc"+i+"' type='checkbox' disabled='disabled' id='CurrentCaution"+i+"' checked='checked'/>";
+			s+="<input name='cc"+i+"' type='hidden' value='true'/>";
+	    }
+	    else
+	    {
+		    s+="<input name='cc"+i+"' type='checkbox' disabled='disabled' id='CurrentCaution"+i+"' />";
+			s+="<input name='cc"+i+"' type='hidden' value='true'/>";
+	    }
+	    s+="</td>";
+	    s+="		</tr>";
+	}
 	}
 	s+="</tr></table>";
     s+="</table>";
@@ -381,3 +476,4 @@ function  ChangeBetaDefault()
 MSG_WARNING="This button is potentially dangerous or is in testing.  To run this button you can go to the settings page and set the global caution flag or talk to your administrator."
 MSG_RUNDISABLED="This button has been disabled. You are not allowed to run it. For more information, talk to your administrator."
 MSG_USERDISABLED="This button has been disabled for Normal Users. You are not allowed to run it. For more information, talk to your administrator."
+MSG_MUSTBEADMIN="You must be running the platform as administrator to set this value."

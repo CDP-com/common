@@ -10,7 +10,8 @@ Section 6 - Contribute Content
 Section 7 - Ad Elements
 Section 8 - Footer Structure
 Section 9 - Web Logic 
-Section 10 - Navigation Elements  
+Section 10 - Navigation Elements
+Section 11 - jQuery & UI Elements 
 */
 
 
@@ -119,6 +120,19 @@ blockquote cite {
 	font-weight: 300;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
+}
+table {
+	border-collapse: collapse;
+	margin-bottom: 25px;
+}
+th {
+	font-weight: bold;
+}
+td {
+	padding: 5px 10px;
+}
+.table-disabled {
+	background: #e4e4e4;
 }
 
 
@@ -519,4 +533,16 @@ blockquote cite {
 }
 .dtree .clip {
 	overflow: hidden;
+}
+
+
+
+
+
+/* Section 11 - jQuery and Other UI Elements */ 
+.viewmorediv {
+	margin-bottom: 25px;
+}
+#accordion {
+	margin-bottom: 25px;
 }
