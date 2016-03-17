@@ -147,6 +147,16 @@ var menu01 =
    }
    ,
    {
+      "ilvl" : 2,
+      "name" : "The Style App",
+      "url" : "../styleapp/main.html",
+      "title" : "The Style App is a reference app for developers to help develop their app UI.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
       "ilvl" : 1,
       "name" : "Notices",
       "url" : "../notices/main.html",
