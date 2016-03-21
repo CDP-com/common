@@ -258,12 +258,15 @@ td {
 	margin: 0 0;
 }
 .app-name {
-	font-size: 36px;
+	font-size: 24px;
 	font-weight: bold;
 	padding: 0px 0 0;
 	color: #ffffff;
 	position: relative;
 	float: left;
+}
+.app-last-modified {
+	font-size: 14px;
 }
 .producer-credits {
 	background-color: #173d34;

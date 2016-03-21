@@ -1,3 +1,14 @@
+/*!
+ * jQuery viewmore
+ *
+ * Copyright 2012 Ashley Ford / Papermashup
+ * Released under the MIT license
+ * http://papermashup.com/jquery-show-hide-plugin
+ * https://github.com/ashleyford/jQuery-Show-Hide-Plugin
+ *
+ * Modified by SnapBack Development Team 
+ * Last Modified Date: 2016-03-14
+ */
 (function ($) {
 $.fn.showHide = function (options) {
 

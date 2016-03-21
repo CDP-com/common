@@ -1,5 +1,7 @@
 // Common Registry functions
 // COMMON REGISTRY DEFAULT PERMISSIONS
+//        Author: SnapBack Development Team   
+// Last Modified: 03/15/16
 
 /*-----------------------------------------------------*/
 /*-------------------- Set Globals --------------------*/
@@ -47,6 +49,8 @@ function IsAdmin()
     return 0; 
 }
 
+// checks to see if the user is running as administrator
+// returns true or false.
 function IsAdministrator()
 {
 	var AppRoot = "HKLM\\SOFTWARE\\CDP\\test";
@@ -230,6 +234,32 @@ function buttonLogic(output,buttonName)
 }
 
 /*-----------------------------------------------------*/
+/*-------------- Button Run Table Display -------------*/
+/*-----------------------------------------------------*/
+
+function CreateButtonRunTable()
+{	
+	var s="<table class='main-table'>";
+	for (i=0; i<btncount; i++){
+		s+="<td style='width: 25%;'>";
+		s+="<div id='cdpbutton"+i+"' class='button-wrapper'>";
+		s+="<p><button style='width: 100%;' title='cdpbutton: Clicking this button will run a script!' onclick='javascript:RunApps(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
+		btnTitle="btn"+i+"_Title";
+		s+=eval(btnTitle);
+		s+="</button></p>"
+		s+="</div>";
+		s+="</td>";
+		s+="<td valign='top'>"
+		btnDescription="btn"+i+"_Description";
+		s+=eval(btnDescription);
+		s+="</td>";
+		s+="</tr>";
+	}
+    s+="</table>";
+	document.write(s);
+}
+
+/*-----------------------------------------------------*/
 /*------------- Button Permission Functions -----------*/
 /*-----------------------------------------------------*/
 
@@ -331,7 +361,12 @@ function CreateButtonAdminTable()
     var CheckBoxCurrentCaution="";
 	
     var btnTitle="";
-	var s="<table class='tblSettings' id='tblSet' ><col width='10%'><col width='40%'><col width='50%'>";
+	var s="<div class='accordion'>";
+	s+="<h3>Administrator Button Permission Settings</h3>";
+	s+="<div>";
+	s+="<p>You must be running as administrator to change permissions.  <a onClick='SBAdmin();' href='#'>Click here to run the platform as administrator.</a></p>";
+	s+="<ul><li>Enable Button - allows anyone to run if enabled and no one to run if disabled</li><li>Enable Normal User - allows a normal user to run the button or not</li><li>Run without Warning - if disabled a warning message will be presented</li></ul>";
+	s+="<table class='tblSettings' id='tblSet' ><col width='10%'><col width='40%'><col width='50%'>";
     s+="<tr>";
 	s+="<TABLE cellpadding=3 cellspacing=3 ><th>&nbsp;Button Name&nbsp;</th><th>&nbsp;Enable Button&nbsp;</th><th>&nbsp;Enable Normal User&nbsp;</th><th>&nbsp;Run without Warning&nbsp;</th>";
 	if(IsAdministrator())
@@ -427,6 +462,8 @@ function CreateButtonAdminTable()
 	}
 	s+="</tr></table>";
     s+="</table>";
+	s+="</div>";
+	s+="</div>";
 //var myTable = document.getElementById("AdminPerms");
 //	myTable.insertAdjacentHTML( 'beforeend', s );
 	document.write(s);

@@ -1,3 +1,8 @@
+/*
+* onlinecheck.js
+*
+*/
+
 var valueCount = 0;
 var valuePassed = 0;
 var valueLinkid = "";
@@ -270,6 +275,8 @@ function fnFileExists( psFilename )
     return lSuccess;
 }
 
+// Checks to see if Persistent Storage Manager Product is installed
+//
 function isPSMInstalled()
 {
    var nSuccess = 0;
