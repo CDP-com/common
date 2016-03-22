@@ -243,7 +243,13 @@ function CreateButtonRunTable()
 	for (i=0; i<btncount; i++){
 		s+="<td style='width: 25%;'>";
 		s+="<div id='cdpbutton"+i+"' class='button-wrapper'>";
-		s+="<p><button style='width: 100%;' title='cdpbutton: Clicking this button will run a script!' onclick='javascript:RunApps(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
+		s+="<p><button package='";
+		btnPackage="appname";
+		s+=eval(btnPackage);
+		s+="' style='width: 100%;' title='";
+		btnMouse="btn"+i+"_MouseOver";
+		s+=eval(btnMouse);
+		s+="' onclick='javascript:RunApps(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
 		btnTitle="btn"+i+"_Title";
 		s+=eval(btnTitle);
 		s+="</button></p>"

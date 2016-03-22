@@ -4,6 +4,15 @@
 /*----------- Structural Template Functions -----------*/
 /*-----------------------------------------------------*/
 
+function CreateAppJSFile()
+{	
+	var s="<script type='text/javascript' src='";
+	appJSFile="appname";
+	s+=eval(appJSFile).toLowerCase();	
+	s+=".js'></script>";
+	document.write(s);
+}
+
 function CreateSidebar1()
 {	
 	var s="<div id='page'>";
@@ -62,11 +71,14 @@ function CreatePageContent1()
 	s+="	</div><!--End #app-name-->";
 	s+="";
 	s+="	<div class='producer-credits'>";
-	s+="		<img src='../common/media/default-group-icon.png' alt='Group Name'/>";
+	s+="		<img src='../common/media/default-group-icon.png' alt='The Producer of this App'/>";
 	s+="		<a id='connect' href='";
 	appLink="connect_link";
 	s+=eval(appLink);
-	s+="' title='Connect with the Developers of this App''>Produced by the App Helpers Group<br />Suggest / Contribute / Get Help</a>";
+	s+="' title='Connect with the Developers of this App''>Produced by ";
+	appGroup="group_name";
+	s+=eval(appGroup);
+	s+="<br />Suggest / Contribute / Get Help</a>";
 	s+="	</div><!--End #producer-credits--></div><!--End #app-intro-->";
 	s+="";
 	s+="	<div id='tab-container'>";
