@@ -8,6 +8,8 @@ Add any notes you may find pertinent
 
 Changelog
 ----
+03/24/2016, smadara, Modified btnpermlogic.js, common-scripts.js, images in css folder, and added outline.js as well as jquery-custom.js
+
 03/22/2016, smadara, Modified btnpermlogic.js and templib.js
 
 03/21/2016, smadara, Modified "../common/scripts/btnpermlogic.js", "../common/scripts/jslib.js", "../common/css/style.css", and added "../common/template/templib.js"

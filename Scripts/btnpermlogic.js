@@ -240,25 +240,28 @@ function buttonLogic(output,buttonName)
 function CreateButtonRunTable()
 {	
 	var s="<table class='main-table'>";
-	for (i=0; i<btncount; i++){
-		s+="<td style='width: 25%;'>";
-		s+="<div id='cdpbutton"+i+"' class='button-wrapper'>";
-		s+="<p><button package='";
+	for (i=0,j=1; i<btncount; i++,j++){
+		s+="<td style='width: 32%;'>";
+		s+="<div id='cdpbutton"+j+"' class='button-wrapper'>";
+		s+="<button package='";
 		btnPackage="appname";
 		s+=eval(btnPackage);
-		s+="' style='width: 100%;' title='";
+		s+="' title='";
 		btnMouse="btn"+i+"_MouseOver";
 		s+=eval(btnMouse);
 		s+="' onclick='javascript:RunApps(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
 		btnTitle="btn"+i+"_Title";
 		s+=eval(btnTitle);
-		s+="</button></p>"
+		s+="</button><a href='#' class='add-to-job-img' title='Add this Button to your Job List'></a><a class='whyButton why-run-img'></a><div class='whyDialog'>";
+		btnWhy="btn"+i+"_Why";
+		s+=eval(btnWhy);
+		s+="</div></a>";
 		s+="</div>";
 		s+="</td>";
-		s+="<td valign='top'>"
+		s+="<td><div class='more'>"
 		btnDescription="btn"+i+"_Description";
 		s+=eval(btnDescription);
-		s+="</td>";
+		s+="</div></td>";
 		s+="</tr>";
 	}
     s+="</table>";

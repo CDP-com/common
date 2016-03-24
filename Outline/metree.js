@@ -118,7 +118,7 @@ var menu01 =
    ,
    {
       "ilvl" : 1,
-      "name" : "Developers SDK",
+      "name" : "Create an App",
       "url" : "../developers/main.html",
       "title" : "App that Installs the Developers Environment and contains guides for developing apps.",
       "comment" : "",
@@ -138,9 +138,9 @@ var menu01 =
    ,
    {
       "ilvl" : 2,
-      "name" : "Hello World",
+      "name" : "Hello World  (example app)",
       "url" : "../helloworld/main.html",
-      "title" : "Hello world is a sample app. It is used to help establish the look and feel for all our apps.",
+      "title" : "Hello world is an example app. It is used to help establish the look and feel for all our apps.",
       "comment" : "",
       "target" : "_self",
       "expanded" : true
@@ -148,9 +148,9 @@ var menu01 =
    ,
    {
       "ilvl" : 2,
-      "name" : "The Style App",
+      "name" : "Style (example app)",
       "url" : "../styleapp/main.html",
-      "title" : "The Style App is a reference app for developers to help develop their app UI.",
+      "title" : "Style is an example app. It is used to help establish the look and feel for all our apps.",
       "comment" : "",
       "target" : "_self",
       "expanded" : true

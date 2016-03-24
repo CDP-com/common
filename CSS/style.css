@@ -380,11 +380,10 @@ td {
 .main-table td {
 	border: none;
 	border-bottom: 1px solid black;
-	vertical-align: middle;
 	padding: 15px;
 }
 .main-table td button {
-	width: 100%;
+	width: 70%;
 	height: 100%;
     min-height: 35px;
 	background-color: #1d4e42;
@@ -400,6 +399,28 @@ td {
 .main-table td button:focus {
 	border: none;
 }
+.main-table .add-to-job-img {
+	background: url(../media/add-to-jobs.png) no-repeat bottom;
+	width: 35px;
+	height: 35px;
+	display: inline-block;
+	margin: 0 3px;
+	vertical-align: middle;
+}
+.main-table td .add-to-job-img:hover {
+	background: url(../media/add-to-jobs-hover.png) no-repeat bottom;
+}
+.main-table .why-run-img {
+	background: url(../media/why-run.png) no-repeat bottom;
+	width: 35px;
+	height: 35px;
+	display: inline-block;
+	margin: 0 3px;
+    vertical-align: middle;
+}
+.main-table td .why-run-img:hover {
+	background: url(../media/why-run-hover.png) no-repeat bottom;
+}
 .certification-table {
 	border-collapse: collapse;
 }
@@ -413,7 +434,9 @@ td {
 .certification-table .committee-name {
 	text-align: center;
 }
-
+#AdminPerms {
+	margin-bottom: 25px;
+}
 
 
 
@@ -548,4 +571,7 @@ td {
 }
 #accordion {
 	margin-bottom: 25px;
+}
+.morecontent span {
+	display: none;
 }
