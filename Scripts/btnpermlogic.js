@@ -252,11 +252,12 @@ function CreateButtonRunTable()
 		s+="' onclick='javascript:RunApps(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
 		btnTitle="btn"+i+"_Title";
 		s+=eval(btnTitle);
-		s+="</button><a href='#' class='add-to-job-img' title='Add this Button to your Job List'></a><a class='whyButton why-run-img'></a><div class='whyDialog'>";
+		s+="</button>";
+		s+="</div>";
+		s+="<a href='#' class='add-to-job-img' title='Add this Button to your Job List'></a><a class='whyButton why-run-img'></a><div class='whyDialog'>";
 		btnWhy="btn"+i+"_Why";
 		s+=eval(btnWhy);
 		s+="</div></a>";
-		s+="</div>";
 		s+="</td>";
 		s+="<td><div class='more'>"
 		btnDescription="btn"+i+"_Description";

@@ -64,10 +64,13 @@ function CreateSidebar2()
 function CreatePageContent1()
 {	
 	var s="<div id='app-intro'>";
+	s+="	<a href='#' class='add-to-menu' title='Add a Shortcut of this App to your Menu'></a>";
 	s+="	<div class='app-name'>";
 	appTitle="apptitle";
 	s+=eval(appTitle);
-	s+="		<br /><span class='app-last-modified'>Last Modified: DD/MM/YYYY</span>";
+	s+="		<br /><span class='app-last-modified'>Last Modified: ";
+	s+=GetpubDate();
+	s+="</span>";
 	s+="	</div><!--End #app-name-->";
 	s+="";
 	s+="	<div class='producer-credits'>";

@@ -918,3 +918,13 @@ Array.prototype.find = function(searchStr)
     }  
     return returnArray;
 }
+
+// Get an app's published date to include in the template
+function GetpubDate()
+{
+	if (typeof (pubDate) === 'undefined') {
+        return 'App is not yet published';
+    } else {
+          return pubDate;;
+    }
+}
