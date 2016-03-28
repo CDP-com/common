@@ -58,6 +58,16 @@ var menu01 =
    ,
    {
       "ilvl" : 2,
+      "name" : "Manage My PCs",
+      "url" : "../managemypcs/main.html",
+      "title" : "Use the Manage MY PCs app to run common apps on all of your PCs at once.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 2,
       "name" : "Analyze Disk",
       "url" : "../analyzedisk/main.html",
       "title" : "This app Checks for Hard Disk Errors and displays them.",
