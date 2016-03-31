@@ -168,6 +168,16 @@ var menu01 =
    ,
    {
       "ilvl" : 1,
+      "name" : "Menus",
+      "url" : "../menusapp/main.html",
+      "title" : "The Menus App contains information about how to manage your menus.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 1,
       "name" : "Notices",
       "url" : "../notices/main.html",
       "title" : "Notices is an app that displays alerts and notifications to the user of the SnapBack Platform.",
@@ -195,8 +205,17 @@ var menu01 =
       "target" : "",
       "expanded" : false
    }
+   ,
+   {
+      "ilvl" : 0,
+      "name" : "End",
+      "url" : "",
+      "title" : "End",
+      "comment" : "Last Entry - HIDE ME LATER",
+      "target" : "",
+      "expanded" : false
+   }
    ]
 }
 ;
  
-
