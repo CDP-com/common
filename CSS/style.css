@@ -401,15 +401,13 @@ td {
 	background-color: #1d4e42;
 	color: #ffffff;
 	font-weight: bold;
-	border: 3px solid #363636;
+	border: none;
+	outline: 3px solid #363636;
 }
 .main-table td button:hover {
 	background-color: #2f7b68;
 	color: #ffffff;
 	cursor: pointer;
-}
-.main-table td button:focus {
-	border: none;
 }
 .button-wrapper {
 	float: left;
@@ -420,7 +418,7 @@ td {
 	width: 35px;
 	height: 35px;
 	display: inline-block;
-	margin: 0 3px;
+	margin: 0 3px 0 6px;
 	vertical-align: middle;
 }
 .main-table td .add-to-job-img:hover {
