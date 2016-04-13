@@ -56,11 +56,31 @@ var menu01 =
       "expanded" : true
    }
    ,
+      {
+      "ilvl" : 2,
+      "name" : "Disable Windows 10 Notification",
+      "url" : "../disablewindows10/main.html",
+      "title" : "Not upgrading to Windows 10? Then turn off that annoying notification!",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
    {
       "ilvl" : 2,
       "name" : "Manage My PCs",
       "url" : "../managemypcs/main.html",
       "title" : "Use the Manage MY PCs app to run common apps on all of your PCs at once.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 2,
+      "name" : "Protect Me",
+      "url" : "../protectme/main.html",
+      "title" : "Protec Me - Comprehensive Data Protection.",
       "comment" : "",
       "target" : "_self",
       "expanded" : true
@@ -121,6 +141,26 @@ var menu01 =
       "name" : "Show Snapshot VSS",
       "url" : "../snapshotsvss/main.html",
       "title" : "This app will create a Microsoft Windows Shadow Copy of a volume",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 1,
+      "name" : "Update Programs",
+      "url" : ".",
+      "title" : "Update all of your programs with one click.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 2,
+      "name" : "Firefox",
+      "url" : "../updatefirefox/main.html",
+      "title" : "Ensure that Firefox is up-to-date now and forever.",
       "comment" : "",
       "target" : "_self",
       "expanded" : true

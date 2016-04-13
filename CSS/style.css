@@ -380,6 +380,15 @@ td {
 	padding: 15px;
 	background: #e4e4e4;
 }
+.statusdiv {
+	text-align: center;
+	width: 70%;
+	margin: 0 auto;
+	border: 3px solid #363636;
+	border-bottom: none;
+	padding: 10px 25px;
+	background: #e4e4e4;
+}
 .main-table {
 	width: 100%;
 	clear: both;
