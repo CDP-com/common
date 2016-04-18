@@ -249,7 +249,7 @@ function CreateButtonRunTable()
 		s+="' title='";
 		btnMouse="btn"+i+"_MouseOver";
 		s+=eval(btnMouse);
-		s+="' onclick='javascript:RunApps(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
+		s+="' onclick='javascript:RunBtn"+i+"(appname, "+i+", DName, UName, btn"+i+"_Command)'>";
 		btnTitle="btn"+i+"_Title";
 		s+=eval(btnTitle);
 		s+="</button>";

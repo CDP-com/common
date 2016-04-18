@@ -634,16 +634,26 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
     var sFullpath = "";
 	var stats = IsAdmin(Computername, CurrentUser)
 	var buttonName="btn"+ButtonNum;
-			 
+	var shell = new ActiveXObject ( "WScript.Shell" );
+	var isServiceRequest=false;
+	var btnServiceVar="btn"+ButtonNum+"_ServiceName";
+	var btnService=eval(btnServiceVar);
+	if (btnService==buttonName)
+	{
+		//alert("It is a Service Request");
+		isServiceRequest=true;
+	}
+	 
 	// setup command for service to run or development command to be run
 	if (development)
 	{
 	    if (sCmd.indexOf("file:") < 0) sFullpath = fnGetDocPath();
 		sFullpath += sCmd;
 		sCmd = sFullpath;
-		var shell = new ActiveXObject ( "WScript.Shell" );
+
 		var sPathFoldername = shell.ExpandEnvironmentStrings( unescape( sCmd ) );
-		sPathFoldername = ('"' + sPathFoldername + '"');	
+		sPathFoldername = ('"' + sPathFoldername + '"');
+
    	}
 	
 	if (ReadFromRegistry(AppCurrentEnableButtonPath))
@@ -660,8 +670,16 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 				}
 				else
 				{
-					// Service Call
-					//runService(ServiceName);
+					if(isServiceRequest)
+					{
+						runService(ManifestURL_Local,"",buttonName);
+					}
+					else
+					{
+						shell.run("explorer.exe " + sPathFoldername, 1, false);
+						shell = null;
+					}
+
 				}
 			 }
 			 else 
@@ -677,8 +695,15 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 					}
 					else
 					{
-					// Service Call
-					//runService(ServiceName);
+						if(isServiceRequest)
+						{
+							runService(ManifestURL_Local,"",buttonName);
+						}
+						else
+						{
+							shell.run("explorer.exe " + sPathFoldername, 1, false);
+							shell = null;
+						}
 					}
 				 }
 				 else {
@@ -703,7 +728,15 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 					else
 					{
 					// Service Call
-					//runService(ServiceName);
+						if(isServiceRequest)
+						{
+							runService(ManifestURL_Local,"",buttonName);
+						}
+						else
+						{
+							shell.run("explorer.exe " + sPathFoldername, 1, false);
+							shell = null;
+						}
 					}
 				}
 				else 
@@ -720,7 +753,15 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 						else
 						{
 							// Service Call
-							//runService(ServiceName);
+							if(isServiceRequest)
+							{
+								runService(ManifestURL_Local,"",buttonName);
+							}
+							else
+							{
+								shell.run("explorer.exe " + sPathFoldername, 1, false);
+								shell = null;
+							}
 						}
 					}
 					else {
@@ -742,7 +783,9 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 		return;
 	}
 }
-
+function reloadpage(){
+	location.reload();
+}
 /*-----------------------------------------------------*/
 /*------------------- Misc Functions ------------------*/
 /*-----------------------------------------------------*/
@@ -927,4 +970,29 @@ function GetpubDate()
     } else {
           return pubDate;;
     }
+}
+
+/*-----------------------------------------------------*/
+/*------------------ Menu Functions -------------------*/
+/*-----------------------------------------------------*/
+
+// this function will do scanning for menu's calling the genpng.js script
+// this used to call the service handle as button - this will remove that constraint
+function fnScanjs(sVal)
+{
+	var objShell = new ActiveXObject ( "WScript.Shell" );
+	var scanjsPath = objShell.ExpandEnvironmentStrings("%ALLUSERSPROFILE%\\CDP\\SnapBack\\Apps\\OOM\\");
+	var scanjsFile = objShell.ExpandEnvironmentStrings("%SYSTEMROOT%\\system32\\cscript.exe ");
+	var scanjsArgs = scanjsPath+"genpngs.js "+"\" "+ sVal+"\"";
+	//var scanjsArgs = "\""+scanjsPath+"genpngs.js "+sVal+"\"";
+	//var scanjsArgs = scanjsPath+"genpngs.js "+sVal;
+	var cmdln = scanjsFile+scanjsArgs;
+	objShell.Run(cmdln,7,true);
+	//var objApp = new ActiveXObject("Shell.Application");
+	//objApp.ShellExecute(scanjsFile, scanjsArgs, "", "open", 0);
+	
+	// release Objects
+	//objApp = null;
+	objShell = null;
+	
 }
