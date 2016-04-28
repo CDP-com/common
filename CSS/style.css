@@ -371,6 +371,12 @@ td {
 	color: #fff;
 	cursor: pointer;
 }
+.btn_arguments {
+	margin: 10px 0;
+}
+.btn_arguments h4 {
+	border-bottom: 1px solid #949494;
+}
 #description {
 	width: 80%;
 	float: right;

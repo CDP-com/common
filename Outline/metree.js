@@ -149,7 +149,7 @@ var menu01 =
    {
       "ilvl" : 1,
       "name" : "Update Programs",
-      "url" : ".",
+      "url" : "#",
       "title" : "Update all of your programs with one click.",
       "comment" : "",
       "target" : "_self",
@@ -181,6 +181,16 @@ var menu01 =
       "name" : "App Template",
       "url" : "../apptemplate/main.html",
       "title" : "App Template is a template for developers to use as a sample to help create their own apps.  It is used to help create the look and feel for all our apps.",
+      "comment" : "",
+      "target" : "_self",
+      "expanded" : true
+   }
+   ,
+   {
+      "ilvl" : 2,
+      "name" : "App Template with Arguments",
+      "url" : "../apptemplateargs/main.html",
+      "title" : "App Template with Arguments demonstrates how a user can select certain arguments and how scripts interpret this data, both on the frontend and the backend.",
       "comment" : "",
       "target" : "_self",
       "expanded" : true

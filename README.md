@@ -8,6 +8,7 @@ Add any notes you may find pertinent
 
 Changelog
 ----
+04/28/2016, smadara, Incorporated writing button arguments to an xml file in each app.  Changes include modifications to: "../common/scripts/btnpermlogic.js", "../common/scripts/jslib.js", "../common/css/style.css", "../common/outline/metree.css", and "../common/template/templib.js"
 03/21/2016, smadara, Modified "../common/scripts/btnpermlogic.js", "../common/scripts/jslib.js", "../common/css/style.css", and added "../common/template/templib.js"
 01/04/2016, mstiles, Added Show Snapshots VSS app to outline.
 01/04/2016, mstiles, Changed app name from Skype2 to Multiple Skype Sessions.

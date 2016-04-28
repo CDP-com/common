@@ -645,16 +645,15 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 	}
 	 
 	// setup command for service to run or development command to be run
-	if (development)
-	{
+	//if (development)
+	//{
 	    if (sCmd.indexOf("file:") < 0) sFullpath = fnGetDocPath();
 		sFullpath += sCmd;
 		sCmd = sFullpath;
 
 		var sPathFoldername = shell.ExpandEnvironmentStrings( unescape( sCmd ) );
-		sPathFoldername = ('"' + sPathFoldername + '"');
-
-   	}
+		sPathFoldername = ('"' + sPathFoldername + '"');	
+   	//}
 	
 	if (ReadFromRegistry(AppCurrentEnableButtonPath))
 	{
@@ -665,6 +664,7 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 				// Run IT
 				if(development)
 				{
+					writeArguementsXML(ButtonNum);
 					shell.run("explorer.exe " + sPathFoldername, 1, false);
 					shell = null;
 				}
@@ -672,10 +672,12 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 				{
 					if(isServiceRequest)
 					{
+						writeArguementsXML(ButtonNum);
 						runService(ManifestURL_Local,"",buttonName);
 					}
 					else
 					{
+						writeArguementsXML(ButtonNum);
 						shell.run("explorer.exe " + sPathFoldername, 1, false);
 						shell = null;
 					}
@@ -690,17 +692,19 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 					 //Run It
 					if(development)
 					{
+						writeArguementsXML(ButtonNum);
 						shell.run("explorer.exe " + sPathFoldername, 1, false);
 						shell = null;
 					}
 					else
 					{
 						if(isServiceRequest)
-						{
+						{	writeArguementsXML(ButtonNum);
 							runService(ManifestURL_Local,"",buttonName);
 						}
 						else
 						{
+							writeArguementsXML(ButtonNum);
 							shell.run("explorer.exe " + sPathFoldername, 1, false);
 							shell = null;
 						}
@@ -722,6 +726,7 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 				// Run IT
 				    if(development)
 					{
+						writeArguementsXML(ButtonNum);
 						shell.run("explorer.exe " + sPathFoldername, 1, false);
 						shell = null;
 					}
@@ -730,10 +735,12 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 					// Service Call
 						if(isServiceRequest)
 						{
+							writeArguementsXML(ButtonNum);
 							runService(ManifestURL_Local,"",buttonName);
 						}
 						else
 						{
+							writeArguementsXML(ButtonNum);
 							shell.run("explorer.exe " + sPathFoldername, 1, false);
 							shell = null;
 						}
@@ -747,6 +754,7 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 					    //Run It
 						if(development)
 						{
+							writeArguementsXML(ButtonNum);
 						    shell.run("explorer.exe " + sPathFoldername, 1, false);
 						    shell = null;
 						}
@@ -755,10 +763,12 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 							// Service Call
 							if(isServiceRequest)
 							{
+								writeArguementsXML(ButtonNum);
 								runService(ManifestURL_Local,"",buttonName);
 							}
 							else
 							{
+								writeArguementsXML(ButtonNum);
 								shell.run("explorer.exe " + sPathFoldername, 1, false);
 								shell = null;
 							}
@@ -782,9 +792,6 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 		alert(MSG_RUNDISABLED);
 		return;
 	}
-}
-function reloadpage(){
-	location.reload();
 }
 /*-----------------------------------------------------*/
 /*------------------- Misc Functions ------------------*/
@@ -995,4 +1002,42 @@ function fnScanjs(sVal)
 	//objApp = null;
 	objShell = null;
 	
+}
+
+/*-----------------------------------------------------*/
+/*------------ Button Argument Functions --------------*/
+/*-----------------------------------------------------*/
+
+// Function to Write Arguments in a XML File for Each Button
+function writeArguementsXML(ButtonNum){
+	try {
+		var btnarguments="btn"+ButtonNum+"_arguments";
+		var btnargumentsNum=eval(btnarguments); 		
+		if (btnargumentsNum > 0) {
+			var curDateTime = new Date();
+			var modTime = curDateTime.toUTCString();
+			
+			//Create new file to write to
+			var fso = new ActiveXObject("Scripting.FileSystemObject");
+			var FILENAME="..\\"+ appname +"\\btn"+ ButtonNum +"arguments.xml";
+			var file = fso.CreateTextFile(FILENAME, true);
+			
+			file.WriteLine('<?xml version="1.0" encoding="utf-8"?>\n');
+			file.WriteLine('<btn'+ ButtonNum + 'arguments>');
+			
+			//For each argument selected, create its own section
+			$("#btn"+ ButtonNum + "_arguments input:checked").each(function (index, value) {
+				file.WriteLine('     <argument>');
+				file.WriteLine('          <' + $(this).attr("name") + '>'+ $(this).val() +'</' + $(this).attr("name") + '>');
+				file.WriteLine('          <modtime>' + modTime + '</modtime>');
+				file.WriteLine('     </argument>');
+			});
+			
+			file.WriteLine('</btn'+ ButtonNum + 'arguments>');
+			file.Close();
+		}
+	}
+	catch (e){
+		return;
+	}
 }

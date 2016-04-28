@@ -227,3 +227,62 @@ function CreateSrcCodeIframes()
     s+="</div>";
 	document.write(s);
 }
+
+/*-----------------------------------------------------*/
+/*---------------- OnLoad Page Scripts ----------------*/
+/*-----------------------------------------------------*/
+
+// Function to Load Default Argument Values
+$(document).ready(function() {
+	try {
+		//Loop through all buttons
+		for (i=0,j=1; i<btncount; i++,j++){
+			//See if any arguments are specified
+			var btnarguments="btn"+i+"_arguments";
+			var btnargumentsNum=eval(btnarguments);
+			//Loop through all arguments
+			if (btnargumentsNum > 0) {	
+				for (n=0,o=1; n<btnargumentsNum; n++,o++){
+					//Try to see if we're running in an HTA
+					try {
+						//See if an arguments XML file exists and, if so, load XML file to get default values
+						var xmlExists;
+						xmlExists = new ActiveXObject("Scripting.FileSystemObject");
+						if(xmlExists.FileExists("..\\"+ appname +"\\btn"+i+"arguments.xml")){
+							var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+							xmlDoc.async="false";
+							xmlDoc.load("..\\"+ appname +"\\btn"+i+"arguments.xml");
+							var xmlValueName = eval("btn"+i+"_arguments"+n+"xmlName");
+							var argumentsDefault = xmlDoc.getElementsByTagName(xmlValueName);
+							for (var a = 0; a < argumentsDefault.length; a++) {
+								//Loop through all arguments specified in XML file
+								var argumentXMLValue = argumentsDefault[a].firstChild.nodeValue;
+								var btnDefaultType = eval("btn"+i+"_arguments"+n+"Type");
+								$("input[type='"+btnDefaultType+"'][value='"+argumentXMLValue+"']").prop("checked",true);
+							}  
+						}
+						//If button has not been run, load default values from app-lib.js
+						else {
+							var argumentsDefault = eval("btn"+i+"_arguments"+n+"Default");
+							jQuery.each(argumentsDefault, function(index, item) {
+								var btnDefaultType = eval("btn"+i+"_arguments"+n+"Type");
+								$("input[type='"+btnDefaultType+"'][value='"+item+"']").prop("checked",true);
+							});
+						}
+					}
+					//Catch if running in any other browser
+					catch (e){
+						var argumentsDefault = eval("btn"+i+"_arguments"+n+"Default");
+						jQuery.each(argumentsDefault, function(index, item) {
+							var btnDefaultType = eval("btn"+i+"_arguments"+n+"Type");
+							$("input[type='"+btnDefaultType+"'][value='"+item+"']").prop("checked",true);
+						});
+					}
+				}		
+			}
+		}
+	}
+	catch (e) {
+	
+	}
+});

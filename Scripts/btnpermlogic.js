@@ -258,6 +258,39 @@ function CreateButtonRunTable()
 		btnWhy="btn"+i+"_Why";
 		s+=eval(btnWhy);
 		s+="</div></a>";
+		
+		try {
+			var btnarguments="btn"+i+"_arguments";
+			var btnargumentsNum=eval(btnarguments); 		
+			if (btnargumentsNum > 0) {	
+				for (n=0,o=1; n<btnargumentsNum; n++,o++){
+					s+="<div id='btn"+i+"_arguments' class='btn_arguments'><h4>";
+					s+=eval("btn"+i+"_arguments"+n+"DisplayName");
+					s+="</h4>";
+					var argumentsValue = eval("btn"+i+"_arguments"+n+"Values");
+					for (v = 0; v < argumentsValue.length; v++) {
+						s+="<input class='";
+						btnNum="btn"+i+"_id";
+						s+=eval(btnNum);
+						s+="argument' type='";
+						btnParmType="btn"+i+"_arguments"+n+"Type";
+						s+=eval(btnParmType);
+						s+="' name='";
+						btnParmName="btn"+i+"_arguments"+n+"xmlName";
+						s+=eval(btnParmName).replace(/\s+/g, '');
+						s+="' value='";
+						s+=argumentsValue[v];
+						s+="'>";
+						s+=argumentsValue[v];
+					}
+					s+="</div>";
+				}		
+			}
+		}
+		catch (e) {
+		
+		}
+		
 		s+="</td>";
 		s+="<td><div class='more'>"
 		btnDescription="btn"+i+"_Description";
