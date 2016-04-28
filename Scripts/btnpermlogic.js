@@ -254,7 +254,7 @@ function CreateButtonRunTable()
 		s+=eval(btnTitle);
 		s+="</button>";
 		s+="</div>";
-		s+="<a href='#' class='add-to-job-img' title='Add this Button to your Job List'></a><a class='whyButton why-run-img'></a><div class='whyDialog'>";
+		s+="<a href='#' id='button"+i+"job' class='add-to-job-img' title='Add this Button to your Job List'></a><a id='button"+i+"why' class='whyButton why-run-img'></a><div class='whyDialog'>";
 		btnWhy="btn"+i+"_Why";
 		s+=eval(btnWhy);
 		s+="</div></a>";
