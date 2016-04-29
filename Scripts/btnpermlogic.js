@@ -241,6 +241,7 @@ function CreateButtonRunTable()
 {	
 	var s="<table class='main-table'>";
 	for (i=0,j=1; i<btncount; i++,j++){
+		// Create each button
 		s+="<td style='width: 32%;'>";
 		s+="<div id='cdpbutton"+j+"' class='button-wrapper'>";
 		s+="<button package='";
@@ -259,6 +260,7 @@ function CreateButtonRunTable()
 		s+=eval(btnWhy);
 		s+="</div></a>";
 		
+		// Load any arguments specified
 		try {
 			var btnarguments="btn"+i+"_arguments";
 			var btnargumentsNum=eval(btnarguments); 		
@@ -269,22 +271,78 @@ function CreateButtonRunTable()
 					s+="</h4>";
 					var argumentsValue = eval("btn"+i+"_arguments"+n+"Values");
 					for (v = 0; v < argumentsValue.length; v++) {
-						s+="<input class='";
-						btnNum="btn"+i+"_id";
-						s+=eval(btnNum);
-						s+="argument' type='";
-						btnParmType="btn"+i+"_arguments"+n+"Type";
-						s+=eval(btnParmType);
-						s+="' name='";
-						btnParmName="btn"+i+"_arguments"+n+"xmlName";
-						s+=eval(btnParmName).replace(/\s+/g, '');
-						s+="' value='";
-						s+=argumentsValue[v];
-						s+="'>";
-						s+=argumentsValue[v];
+						
+						// Try and Load any arguments which are fixed
+						try {
+							var valuesFixed = eval("btn"+i+"_arguments"+n+"Fixed");
+							if( $.inArray(argumentsValue[v], valuesFixed) != -1){
+								s+="<input disabled checked class='";
+								btnNum="btn"+i+"_id";
+								s+=eval(btnNum);
+								s+="argument' type='";
+								btnParmType="btn"+i+"_arguments"+n+"Type";
+								s+=eval(btnParmType);
+								s+="' name='";
+								btnParmName="btn"+i+"_arguments"+n+"xmlName";
+								s+=eval(btnParmName).replace(/\s+/g, '');
+								s+="' value='";
+								s+=argumentsValue[v];
+								s+="'>";
+								s+=argumentsValue[v];
+								var TypeDisplay = eval("btn"+i+"_arguments"+n+"TypeDisplay")
+								if (TypeDisplay == "Break")
+									s+="<br />"
+								else {
+								
+								}
+							} 
+							else {
+								s+="<input class='";
+								btnNum="btn"+i+"_id";
+								s+=eval(btnNum);
+								s+="argument' type='";
+								btnParmType="btn"+i+"_arguments"+n+"Type";
+								s+=eval(btnParmType);
+								s+="' name='";
+								btnParmName="btn"+i+"_arguments"+n+"xmlName";
+								s+=eval(btnParmName).replace(/\s+/g, '');
+								s+="' value='";
+								s+=argumentsValue[v];
+								s+="'>";
+								s+=argumentsValue[v];
+								var TypeDisplay = eval("btn"+i+"_arguments"+n+"TypeDisplay")
+								if (TypeDisplay == "Break")
+									s+="<br />"
+								else {
+								
+								}
+							}
+						}
+						// Catch if any values aren't fixed
+						catch (e) {
+							s+="<input class='";
+							btnNum="btn"+i+"_id";
+							s+=eval(btnNum);
+							s+="argument' type='";
+							btnParmType="btn"+i+"_arguments"+n+"Type";
+							s+=eval(btnParmType);
+							s+="' name='";
+							btnParmName="btn"+i+"_arguments"+n+"xmlName";
+							s+=eval(btnParmName).replace(/\s+/g, '');
+							s+="' value='";
+							s+=argumentsValue[v];
+							s+="'>";
+							s+=argumentsValue[v];
+							var TypeDisplay = eval("btn"+i+"_arguments"+n+"TypeDisplay")
+							if (TypeDisplay == "Break")
+								s+="<br />"
+							else {
+							
+							}
+						}	
 					}
-					s+="</div>";
-				}		
+					s+="</div>";					
+				}			
 			}
 		}
 		catch (e) {
