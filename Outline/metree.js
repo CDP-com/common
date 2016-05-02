@@ -228,9 +228,9 @@ var menu01 =
    ,
    {
       "ilvl" : 1,
-      "name" : "Notices",
-      "url" : "../notices/main.html",
-      "title" : "Notices is an app that displays alerts and notifications to the user of the SnapBack Platform.",
+      "name" : "Dashboard",
+      "url" : "../dashboard/main.html",
+      "title" : "Dashboard is an app that displays alerts and notifications to the user of the SnapBack Platform.",
       "comment" : "",
       "target" : "_self",
       "expanded" : true
