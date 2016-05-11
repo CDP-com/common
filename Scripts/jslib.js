@@ -633,7 +633,8 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
     var AppCurrentAllowUserPath = AppRoot + AppName + btnKey+ "\\CurrentAllowUser";    
     var sFullpath = "";
 	var stats = IsAdmin(Computername, CurrentUser)
-	var buttonName="btn"+ButtonNum;
+	var buttonName  = "btn"+ButtonNum;
+	var buttonParms = "btn"+ButtonNum+"_CommandParms";
 	var shell = new ActiveXObject ( "WScript.Shell" );
 	var isServiceRequest=false;
 	var btnServiceVar="btn"+ButtonNum+"_ServiceName";
@@ -642,6 +643,11 @@ function RunApps( AppName, ButtonNum, Computername, CurrentUser, sCmd )
 	{
 		//alert("It is a Service Request");
 		isServiceRequest=true;
+		 var sbparms = eval(buttonParms);
+		 if (sbparms != "")
+		 {
+		   buttonName+=","+sbparms;
+		 }
 	}
 	 
 	// setup command for service to run or development command to be run
@@ -1036,6 +1042,52 @@ function writeArguementsXML(ButtonNum){
 			file.WriteLine('</btn'+ ButtonNum + 'arguments>');
 			file.Close();
 		}
+	}
+	catch (e){
+		return;
+	}
+}
+
+/*-----------------------------------------------------*/
+/*----------- Write Notificaton Function --------------*/
+/*-----------------------------------------------------*/
+
+function writeNotification( apptitle, appname, status, notice ) {
+	try {
+		var curDateTime = new Date();
+		var modTime = curDateTime.toUTCString();
+		
+		var currentTime = new Date();
+		var year = currentTime.getFullYear();
+		var month = currentTime.getMonth();
+		var day = currentTime.getDate();
+		var hour = currentTime.getHours();
+		var min  = currentTime.getMinutes();
+		var sec  = currentTime.getSeconds();
+		
+		var timeStamp =  year + "" + month + "" + day + "" + hour + "" + "" + min + "" + sec;
+		
+		var notificationMessage = escape(notice);
+		
+		//Create new file to write to
+		var shell  = new ActiveXObject( "WScript.Shell" );
+		var notificationPath = shell.ExpandEnvironmentStrings( unescape( "%ALLUSERSPROFILE%\\CDP\\SnapBack\\Notifications\\" ) );
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var notificationFile = notificationPath + appname + "_" + timeStamp + ".xml";
+		var file = fso.CreateTextFile(notificationFile, true);
+		
+		file.WriteLine('<?xml version="1.0" encoding="utf-8"?>\n');
+		file.WriteLine('<notification>');
+		
+		file.WriteLine('     <AppName>' + apptitle + '</AppName>');
+		file.WriteLine('     <PackageName>' + appname + '</PackageName>');
+		file.WriteLine('     <Status>' + status + '</Status>');
+		file.WriteLine('     <Notice>' + unescape(notificationMessage) + '</Notice>');
+		file.WriteLine('     <Mark>Unread</Mark>');
+		file.WriteLine('     <CreatedDate>' + modTime + '</CreatedDate>');
+	
+		file.WriteLine('</notification>');
+		file.Close();
 	}
 	catch (e){
 		return;

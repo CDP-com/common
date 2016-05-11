@@ -1,0 +1,3 @@
+@echo off
+
+( echo ^<?xml version="1.0"?^> && echo ^<notification^> && echo ^<AppName^>%1^</AppName^> && echo ^<PackageName^>%2^</PackageName^> && echo ^<Status^>%3^</Status^> && echo ^<Notice^>%4^</Notice^> && echo ^<Mark^>Unread^</Mark^> && echo ^<CreationDate^>%5^</CreationDate^> && echo ^</notification^>) > c:\ProgramData\CDP\SnapBack\Notifications\%2_%DATE:~-4%%DATE:~-10,-8%%DATE:~-7,-5%%TIME:~1,1%%TIME:~3,2%%TIME:~6,2%.xml
